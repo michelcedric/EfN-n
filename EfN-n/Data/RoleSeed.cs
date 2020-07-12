@@ -15,7 +15,7 @@ namespace EfN_n.Data
                 var role1 = new SecurityRoleConfiguration
                 {
                     Name = "Role1",
-                    Users = new []
+                    Users = new[]
                     {
                         "User1"
                     }
@@ -24,7 +24,7 @@ namespace EfN_n.Data
                 var feature1 = new FeaturesConfiguration
                 {
                     Name = "Feature1",
-                    Roles = new []
+                    Roles = new[]
                     {
                         role1.Name
                     }
@@ -32,11 +32,11 @@ namespace EfN_n.Data
 
                 return new SecurityConfiguration
                 {
-                    Roles = new []
+                    Roles = new[]
                     {
                         role1
                     },
-                    Features = new []
+                    Features = new[]
                     {
                        feature1
                     }
@@ -81,7 +81,24 @@ namespace EfN_n.Data
                         //context.Entry(roleFeature).State = EntityState.Added;
                     }
                 }
-                context.SaveChanges();
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    foreach (var entry in ex.Entries)
+                    {
+                        if (entry.Entity is RoleFeature)
+                        {
+                            var state = entry.State;
+                            //State is modified instea of added 
+                            //work arround uncommented line 81
+                            //is working well in ef core 2.2
+                            throw ex;
+                        }
+                    }
+                }
             }
 
         }
