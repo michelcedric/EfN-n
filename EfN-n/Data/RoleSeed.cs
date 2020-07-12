@@ -78,7 +78,7 @@ namespace EfN_n.Data
                         //EF workarround to avoid DbUpdateConcurrencyException. 
                         //EF considered (bug?) the entity in modified state (n-n relationship) but it's a new object (Added)
                         //https://docs.microsoft.com/fr-fr/ef/core/saving/concurrency
-                        //context.Entry(roleFeature).State = EntityState.Added;
+                        context.Entry(roleFeature).State = EntityState.Added;
                     }
                 }
                 try
