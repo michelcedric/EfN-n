@@ -20,6 +20,8 @@ namespace EfN_n.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<RoleFeature>().HasKey(x => new {x.FeatureId, x.RoleId});
 
             modelBuilder.Entity<RoleFeature>()
                 .HasOne(pt => pt.Role)
