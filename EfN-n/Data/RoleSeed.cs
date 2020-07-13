@@ -15,7 +15,7 @@ namespace EfN_n.Data
                 var role1 = new SecurityRoleConfiguration
                 {
                     Name = "Role1",
-                    Users = new []
+                    Users = new[]
                     {
                         "User1"
                     }
@@ -24,7 +24,7 @@ namespace EfN_n.Data
                 var feature1 = new FeaturesConfiguration
                 {
                     Name = "Feature1",
-                    Roles = new []
+                    Roles = new[]
                     {
                         role1.Name
                     }
@@ -32,11 +32,11 @@ namespace EfN_n.Data
 
                 return new SecurityConfiguration
                 {
-                    Roles = new []
+                    Roles = new[]
                     {
                         role1
                     },
-                    Features = new []
+                    Features = new[]
                     {
                        feature1
                     }
@@ -74,11 +74,6 @@ namespace EfN_n.Data
                         var roleFeature = RoleFeature.Create(role, context.Features.Single(x => x.Name == feature.Name));
 
                         role.AddRoleFeature(roleFeature);
-
-                        //EF workarround to avoid DbUpdateConcurrencyException. 
-                        //EF considered (bug?) the entity in modified state (n-n relationship) but it's a new object (Added)
-                        //https://docs.microsoft.com/fr-fr/ef/core/saving/concurrency
-                        //context.Entry(roleFeature).State = EntityState.Added;
                     }
                 }
                 context.SaveChanges();
