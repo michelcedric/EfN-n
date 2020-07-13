@@ -2,7 +2,7 @@
 
 namespace EfN_n.Entities
 {
-    public class RoleFeature : BaseEntity<Guid>
+    public class RoleFeature
     {
         public Guid RoleId { get; private set; }
         public Role Role { get; private set; }
@@ -12,8 +12,7 @@ namespace EfN_n.Entities
         public static RoleFeature Create(Role role, Feature feature)
         {
             var roleFeature = new RoleFeature
-            {
-                Id = Guid.NewGuid(),
+            {               
                 Feature = feature,
                 Role = role,
                 FeatureId = feature.Id,

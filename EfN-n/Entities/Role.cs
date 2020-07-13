@@ -7,15 +7,12 @@ namespace EfN_n.Entities
     {
         public Role()
         {
-            RoleFeatures = new List<RoleFeature>();
-            //RoleActiveDirectoryObjects = new List<RoleActiveDirectoryObject>();
+            RoleFeatures = new List<RoleFeature>();          
         }
 
         public string Name { get; private set; }
 
-        public IList<RoleFeature> RoleFeatures { get; private set; }
-
-        //public IList<RoleActiveDirectoryObject> RoleActiveDirectoryObjects { get; private set; }
+        public IList<RoleFeature> RoleFeatures { get; private set; }    
 
         public static Role Create(string name)
         {
@@ -26,12 +23,6 @@ namespace EfN_n.Entities
         {
             foreach (var roleFeature in roleFeatures)
                 RoleFeatures.Add(roleFeature);
-        }
-
-        //public void AddRoleActiveDirectoryObject(params RoleActiveDirectoryObject[] roleActiveDirectoryRoles)
-        //{
-        //    foreach (var roleFeature in roleActiveDirectoryRoles)
-        //        RoleActiveDirectoryObjects.Add(roleFeature);
-        //}
+        }     
     }
 }

@@ -31,18 +31,7 @@ namespace EfN_n.Data
             modelBuilder.Entity<RoleFeature>()
                 .HasOne(pt => pt.Feature)
                 .WithMany(t => t.RoleFeatures)
-                .HasForeignKey(pt => pt.FeatureId);
-
-            //modelBuilder.Entity<RoleActiveDirectoryObject>()
-            //    .HasOne(pt => pt.Role)
-            //    .WithMany(p => p.RoleActiveDirectoryObjects)
-            //    .HasForeignKey(pt => pt.RoleId);
-
-            //modelBuilder.Entity<RoleActiveDirectoryObject>()
-            //    .HasOne(pt => pt.ActiveDirectoryObject)
-            //    .WithMany(p => p.RoleActiveDirectoryObjects)
-            //    .HasForeignKey(pt => pt.ActiveDirectoryObjectId);
-
+                .HasForeignKey(pt => pt.FeatureId);          
         }
 
     }
