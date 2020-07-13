@@ -98,11 +98,5 @@ namespace EfN_n.Data
     {
         public string Name { get; set; }
         public IEnumerable<string> Users { get; set; }
-    }
-
-    //public class SecurityUserConfiguration
-    //{
-    //    public string Name { get; set; }
-    //    public ActiveDirectoryObjectType ObjectType { get; set; }
-    //}
+    }   
 }
